@@ -1,0 +1,19 @@
+---
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2025 Andrew Grimberg <agrimberg@linuxfoundation.org>
+
+name: code-review-agent
+description: >-
+  Generic, language-agnostic pull request review agent. Performs rigorous,
+  structured, high-signal code reviews for any repository, adapting to each
+  project's stack, conventions, and tooling.
+author: tykeal
+tool: copilot
+kind: agent
+tags:
+  - code-review
+  - pull-request
+  - quality
+  - automation
+version: 1.0.0
+license: MIT
