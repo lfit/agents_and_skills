@@ -1,0 +1,35 @@
+---
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2025 The Linux Foundation
+
+# Metadata for a shared set of instructions. Copy this folder into
+# contributors/<your-handle>/instructions/<name>/ and fill in the fields.
+
+# Human-readable name of the instruction set.
+name: my-instructions
+
+# One- or two-sentence summary of what the instructions cover and their scope.
+description: >-
+  Short description of what the instructions direct the assistant to do and the
+  scope in which they apply (for example, global or per-repository).
+
+# GitHub handle (or team name) of the contributor who owns this entry.
+author: your-handle
+
+# Target tool / runtime these instructions are built for.
+# Examples: copilot, claude, cursor, generic
+tool: generic
+
+# Kind of entry. For this folder it is always "instructions".
+kind: instructions
+
+# Free-form tags used for discovery and the generated index.
+tags:
+  - instructions
+  - getting-started
+
+# Semantic version of this instruction set.
+version: 0.1.0
+
+# SPDX license identifier for this entry. Defaults to the repo license.
+license: Apache-2.0

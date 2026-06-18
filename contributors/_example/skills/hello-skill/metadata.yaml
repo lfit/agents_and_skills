@@ -1,0 +1,16 @@
+---
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2025 The Linux Foundation
+
+name: hello-skill
+description: >-
+  Example skill that summarizes the conventions for adding a new entry to the
+  shared agents and skills repository.
+author: _example
+tool: generic
+kind: skill
+tags:
+  - example
+  - getting-started
+version: 0.1.0
+license: Apache-2.0

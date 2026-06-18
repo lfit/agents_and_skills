@@ -1,0 +1,15 @@
+---
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2025 The Linux Foundation
+
+# markdownlint configuration
+default: true
+
+# Line length: descriptions, tables, and links vary in length.
+MD013: false
+
+# Inline HTML is used for SPDX headers and the index markers.
+MD033: false
+
+# Files start with an SPDX comment rather than a top-level heading.
+MD041: false

@@ -1,0 +1,19 @@
+---
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2025 Andrew Grimberg <agrimberg@linuxfoundation.org>
+
+name: global-instructions
+description: >-
+  Global Copilot CLI instructions covering commit hygiene (signed, verified
+  commits and a rubber-duck review cycle), PR creation with a mandatory
+  Copilot review loop, and CI/merge expectations.
+author: tykeal
+tool: copilot
+kind: instructions
+tags:
+  - instructions
+  - global
+  - commit-signing
+  - pr-review
+version: 1.0.0
+license: MIT

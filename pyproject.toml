@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2025 The Linux Foundation
+
+[tool.basedpyright]
+# Use the standard type-checking profile rather than basedpyright's stricter
+# "recommended" defaults, which flag third-party APIs (such as PyYAML) that
+# return ``Any``.
+typeCheckingMode = "standard"
+pythonVersion = "3.13"
+
+[tool.mypy]
+python_version = "3.13"
+warn_unused_ignores = true

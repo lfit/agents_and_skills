@@ -1,0 +1,16 @@
+---
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2025 The Linux Foundation
+
+name: hello-agent
+description: >-
+  Example agent that greets the user and explains how shared agents are
+  structured in this repository.
+author: _example
+tool: generic
+kind: agent
+tags:
+  - example
+  - getting-started
+version: 0.1.0
+license: Apache-2.0

@@ -1,0 +1,176 @@
+---
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2025 The Linux Foundation
+
+ci:
+  # pre-commit.ci sandbox prevents network calls; disable gha-workflow-linter
+  skip: [pytest, gha-workflow-linter]
+  autofix_commit_msg: |
+    Chore: pre-commit autofixes
+
+    Signed-off-by: pre-commit-ci[bot] <pre-commit-ci@users.noreply.github.com>
+  autoupdate_commit_msg: |
+    Chore: pre-commit autoupdate
+
+    Signed-off-by: pre-commit-ci[bot] <pre-commit-ci@users.noreply.github.com>
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-builtin-literals
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-illegal-windows-names
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-vcs-permalinks
+      - id: check-xml
+      - id: check-yaml
+      - id: debug-statements
+      - id: destroyed-symlinks
+      - id: detect-aws-credentials
+        args: ["--allow-missing-credentials"]
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: forbid-new-submodules
+      - id: forbid-submodules
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+      - id: no-commit-to-branch
+        args:
+          - --branch=dev
+          - --branch=master
+          - --branch=main
+          - --branch=rc
+          - --branch=production
+      - id: requirements-txt-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: acc9d9de6369b76d22cb4167029d2035e8730b98  # frozen: v0.19.1
+    hooks:
+      - id: gitlint
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: cba56bcde1fdd01c1deb3f945e69764c291a6530  # frozen: v1.38.0
+    hooks:
+      - id: yamllint
+        types: [yaml]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 3b3f7c3f57fe9925356faf5fe6230835138be230  # frozen: v0.15.17
+    hooks:
+      - id: ruff
+        files: "\\.py$"
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+        files: "\\.py$"
+
+  - repo: local
+    hooks:
+      - id: aislop
+        name: aislop ci
+        entry: aislop ci
+        language: node
+        additional_dependencies:
+          - aislop@0.12.0
+        pass_filenames: false
+        require_serial: true
+      - id: generate-index
+        name: generate catalog index
+        entry: python scripts/generate_index.py
+        language: python
+        additional_dependencies:
+          - PyYAML==6.0.2
+        pass_filenames: false
+        require_serial: true
+        files: >-
+          (^contributors/.*/metadata\.yaml$|^README\.md$|^scripts/generate_index\.py$)
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: d2823d321df3af8f878f7ee3414dc94d037145b9  # frozen: v2.1.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - types-requests>=2.32.0
+          - types-PyYAML>=6.0.0
+
+  - repo: https://github.com/btford/write-good
+    rev: f4bd563644dd2c201cedd86c2670305686c16450  # frozen: v1.0.8
+    hooks:
+      - id: write-good
+        files: "\\.(rst|md|markdown|mdown|mkdn)$"
+        # Passive voice is common and acceptable in technical documentation,
+        # including the auto-generated catalog index built from contributor
+        # metadata; disable that check while keeping the rest.
+        args: ["--no-passive"]
+        # Lint README and documentation prose, but not the agent, skill, or
+        # instruction definition files, which are functional artifacts authored
+        # for tools rather than human-facing prose.
+        exclude: "^contributors/[^/]+/[^/]+/[^/]+/(?!README\\.md$).+\\.(rst|md|markdown|mdown|mkdn)$"
+
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: 745eface02aef23e168a8afb6b5737818efbea95  # frozen: v0.11.0.1
+    hooks:
+      - id: shellcheck
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: a4d5d37e66ebcd6b3705204a1d6dbb56dea66338  # frozen: v0.49.0
+    hooks:
+      - id: markdownlint
+        args: ["--fix"]
+        # Lint README and documentation files, but not the verbatim agent,
+        # skill, or instruction definition files contributed by users.
+        exclude: "^contributors/[^/]+/[^/]+/[^/]+/(?!README\\.md$).+\\.(md|markdown|mdown|mkdn)$"
+
+  - repo: https://github.com/fsfe/reuse-tool
+    rev: a1bb792acda6fd0724936b4ebbdbc8eceb9c0459  # frozen: v6.2.0
+    hooks:
+      - id: reuse
+
+  # Replaces: https://github.com/rhysd/actionlint
+  # Permits actionlint to run both locally and with precommit.ci/GitHub
+  - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
+    rev: 2f3dbd354aa118b539dee99d8eed05a83097a199  # frozen: v1.7.12.24
+    hooks:
+      - id: actionlint
+
+  # Check for misspellings in documentation files
+  - repo: https://github.com/codespell-project/codespell
+    rev: 2ccb47ff45ad361a21071a7eedda4c37e6ae8c5a  # frozen: v2.4.2
+    hooks:
+      - id: codespell
+
+  # Requires a mirror, primary repo lacks .pre-commit-hooks.yaml
+  - repo: https://github.com/DetachHead/basedpyright-prek-mirror
+    rev: 5f6f2cb9fa8aec15105f77fd21e8dfe29838b16d  # frozen: 1.39.8
+    hooks:
+      - id: basedpyright
+
+  - repo: https://github.com/lfreleng-actions/gha-workflow-linter
+    rev: c56523848a9983ab66d73f357137700a42c0c6e8  # frozen: v1.2.0
+    hooks:
+      - id: gha-workflow-linter
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 5030dca3047414c338091455ac41803200ec1f0f  # frozen: 0.37.3
+    hooks:
+      - id: check-github-actions
+      - id: check-github-workflows
+      - id: check-jsonschema
+        name: Check GitHub Workflows set timeout-minutes
+        args:
+          - --builtin-schema
+          - github-workflows-require-timeout
+        files: ^\.github/workflows/[^/]+$
+        types:
+          - yaml
+      - id: check-readthedocs

@@ -1,0 +1,21 @@
+---
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2025 Andrew Grimberg <agrimberg@linuxfoundation.org>
+
+name: pm-agent
+description: >-
+  Project manager agent that drives the full development lifecycle: spec
+  authoring, implementation planning, coding, testing, PR review, and merge.
+  Designed for repositories with strict commit conventions, pre-commit hooks,
+  and branch protection.
+author: tykeal
+tool: copilot
+kind: agent
+tags:
+  - project-management
+  - lifecycle
+  - ci
+  - pr-review
+  - automation
+version: 1.0.0
+license: MIT

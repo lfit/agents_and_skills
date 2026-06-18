@@ -1,0 +1,35 @@
+---
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2025 The Linux Foundation
+
+# Metadata for a shared skill. Copy this folder into
+# contributors/<your-handle>/skills/<skill-name>/ and fill in the fields.
+
+# Human-readable name of the skill.
+name: my-skill
+
+# One- or two-sentence summary of what the skill does and when to use it.
+description: >-
+  Short description of the skill's purpose, the problem it solves, and the
+  context in which it should be used.
+
+# GitHub handle (or team name) of the contributor who owns this entry.
+author: your-handle
+
+# Target tool / runtime this skill is built for.
+# Examples: copilot, claude, cursor, generic, mcp
+tool: generic
+
+# Kind of entry. For this folder it is always "skill".
+kind: skill
+
+# Free-form tags used for discovery and the generated index.
+tags:
+  - example
+  - getting-started
+
+# Semantic version of this skill definition.
+version: 0.1.0
+
+# SPDX license identifier for this entry. Defaults to the repo license.
+license: Apache-2.0

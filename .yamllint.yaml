@@ -1,0 +1,15 @@
+---
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2025 The Linux Foundation
+
+extends: default
+
+rules:
+  # Allow longer lines than the 80-character default; pinned action SHAs and
+  # generated content can exceed it.
+  line-length:
+    max: 120
+  # GitHub Actions workflows use the `on:` key, which the truthy rule would
+  # otherwise flag.
+  truthy:
+    check-keys: false
