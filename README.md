@@ -152,6 +152,7 @@ hand; run the script and commit the result.
 
 | Name | Kind | Tool | Description | Tags | Version |
 | --- | --- | --- | --- | --- | --- |
+| [code-review-agent](contributors/tykeal/agents/code-review-agent) | agent | copilot | Generic, language-agnostic pull request review agent. Performs rigorous, structured, high-signal code reviews for any repository, adapting to each project's stack, conventions, and tooling. | code-review, pull-request, quality, automation | 1.0.0 |
 | [pm-agent](contributors/tykeal/agents/pm-agent) | agent | copilot | Project manager agent that drives the full development lifecycle: spec authoring, implementation planning, coding, testing, PR review, and merge. Designed for repositories with strict commit conventions, pre-commit hooks, and branch protection. | project-management, lifecycle, ci, pr-review, automation | 1.0.0 |
 | [global-instructions](contributors/tykeal/instructions/global-instructions) | instructions | copilot | Global Copilot CLI instructions covering commit hygiene (signed, verified commits and a rubber-duck review cycle), PR creation with a mandatory Copilot review loop, and CI/merge expectations. | instructions, global, commit-signing, pr-review | 1.0.0 |
 
